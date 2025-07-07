@@ -7,6 +7,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: Admin123!
       MYSQL_DATABASE: mydb
+      UPLOAD_LIMIT: 100M
     ports:
       - "3307:3306"
     volumes:
