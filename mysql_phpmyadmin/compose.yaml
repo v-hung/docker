@@ -21,6 +21,7 @@ services:
       PMA_HOST: mysql
       PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: Admin123!
+      UPLOAD_LIMIT: 100M
     ports:
       - "8081:80"
     restart: unless-stopped
