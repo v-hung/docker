@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  oracle-db:
+    image: gvenzl/oracle-xe:21.3.0
+    container_name: oracle-db
+    environment:
+      ORACLE_PASSWORD: Admin123!
+      # Service name: FREEPDB1
+      # Service name: XEPDB1
+      APP_USER: my_user
+      APP_USER_PASSWORD: User123!
+    ports:
+      - "1522:1521"
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+    restart: unless-stopped
+
+volumes:
+  oracle_data:
