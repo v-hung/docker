@@ -9,7 +9,7 @@ services:
       MYSQL_DATABASE: mydb
       UPLOAD_LIMIT: 100M
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
