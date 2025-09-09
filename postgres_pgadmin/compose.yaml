@@ -3,10 +3,9 @@ version: "3.8"
 services:
   postgres:
     image: postgres:16
-    container_name: postgres
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: Admin123!
+      POSTGRES_PASSWORD: Admin@123
       POSTGRES_DB: mydb
     ports:
       - "5432:5432"
@@ -18,10 +17,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: Admin123!
+      PGADMIN_DEFAULT_PASSWORD: Admin@123
       # PGADMIN_CONFIG_SERVER_MODE: "False"
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
     ports:
