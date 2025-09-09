@@ -5,7 +5,7 @@ services:
     image: gvenzl/oracle-xe:21.3.0
     environment:
       ORACLE_PASSWORD: Admin@123
-      # Service name: FREEPDB1
+      # Oracle user: SYSTEM (SYS)
       # Service name: XEPDB1
       APP_USER: my_user
       APP_USER_PASSWORD: User@123
