@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  ome:
+    image: airensoft/ovenmediaengine:latest
+    container_name: ome
+    environment:
+      - OME_HOST_IP=192.168.10.43
+    ports:
+      - "1935:1935" # RTMP
+      - "9999:9999/udp" # SRT Publish/Playback
+      - "9000:9000" # OME Web UI / Stats
+      - "3333:3333" # WebRTC WebSocket Signaling
+      - "3478:3478" # STUN
+      - "10000-10009:10000-10009/udp" # WebRTC Media UDP Ports
+    restart: unless-stopped
+    # Server              rtmp://localhost:1935/app
+    # Stream Key          stream
+    # WebRTC Playback     ws://localhost:3333/app/stream
+    # LLHLS Playback      http://localhost:3333/app/stream/llhls.m3u8
+
+  ovenplayer:
+    image: airensoft/ovenplayerdemo:latest
+    container_name: ovenplayer
+    ports:
+      - "8090:80" # Web UI
+    restart: unless-stopped

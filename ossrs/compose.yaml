@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  srs:
+    image: ossrs/srs:6
+    container_name: srs-v6
+    ports:
+      - "1935:1935" # RTMP
+      - "8080:8080" # HTTP/WebRTC player
+      - "1985:1985" # <── API WebRTC BEGIN
+      - "8000:8000/udp" # <── RTC UDP Port
+    environment:
+      - CANDIDATE=192.168.10.43
+    command: >
+      ./objs/srs -c conf/srs.conf
+    volumes:
+      - ./srs.conf:/usr/local/srs/conf/srs.conf
