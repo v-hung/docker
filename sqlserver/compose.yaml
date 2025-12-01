@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      # account : sa
+      MSSQL_SA_PASSWORD: "Admin@123"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    restart: unless-stopped
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    depends_on:
+      - sqlserver
+    environment:
+      ADMINER_DEFAULT_SERVER: sqlserver
+    ports:
+      - "8081:8080"
+    restart: unless-stopped
+
+volumes:
+  sqlserver_data:
