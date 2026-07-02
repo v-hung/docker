@@ -11,10 +11,15 @@ services:
       - ollama_data:/root/.ollama
     environment:
       - OLLAMA_KEEP_ALIVE=24h
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 6g
+    deploy:
+      resources:
+        # limits:
+        # memory: 6g
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
 volumes:
   ollama_data:

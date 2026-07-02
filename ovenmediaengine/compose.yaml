@@ -5,7 +5,7 @@ services:
     image: airensoft/ovenmediaengine:latest
     container_name: ome
     environment:
-      - OME_HOST_IP=192.168.10.43
+      - OME_HOST_IP=192.168.1.101
     ports:
       - "1935:1935" # RTMP
       - "9999:9999/udp" # SRT Publish/Playback
