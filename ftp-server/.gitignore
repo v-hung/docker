@@ -1,0 +1,3 @@
+ftp_share/*
+!ftp_share/.gitkeep
+sftpgo_data/*

@@ -1,0 +1,20 @@
+version: "3.6"
+
+services:
+  gitlab:
+    image: "gitlab/gitlab-ee:12.8.2-ee.0"
+    restart: "always"
+    hostname: "gitlab.test.local"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost:8077'
+        nginx['listen_port'] = 80
+        nginx['listen_https'] = false
+    ports:
+      - "8077:80"
+      - "2222:22"
+    volumes:
+      - "./config:/etc/gitlab"
+      - "./logs:/var/log/gitlab"
+      - "./data:/var/opt/gitlab"
+      - "./1781084179_2026_06_10_12.8.2-ee_gitlab_backup.tar:/var/opt/gitlab/backups/1781084179_2026_06_10_12.8.2-ee_gitlab_backup.tar"

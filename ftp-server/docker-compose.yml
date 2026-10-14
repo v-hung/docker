@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  ftp-server:
+    image: drakkan/sftpgo:latest
+    container_name: yonden-sftpgo
+    ports:
+      - "8080:8080"
+      - "21:21"
+      - "21000-21010:21000-21010"
+    environment:
+      - SFTPGO_FTPD__BINDINGS__0__FORCE_PASSIVE_IP=192.168.10.43
+      - SFTPGO_FTPD__BINDINGS__0__PORT=21
+      - SFTPGO_FTPD__PASSIVE_PORT_RANGE__START=21000
+      - SFTPGO_FTPD__PASSIVE_PORT_RANGE__END=21010
+    volumes:
+      - ./sftpgo_data:/var/lib/sftpgo
+      - ./ftp_share:/srv/sftpgo/data
+    restart: unless-stopped
