@@ -1,10 +1,10 @@
-version: "3.6"
+version: "3.8"
 
 services:
   gitlab:
     image: "gitlab/gitlab-ee:12.8.2-ee.0"
     restart: "always"
-    hostname: "gitlab.test.local"
+    hostname: "gitlab.wbc.local"
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://localhost:8077'
